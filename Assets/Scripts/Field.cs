@@ -23,6 +23,10 @@ public class Field : MonoBehaviour
         if (Instance == null)
             Instance = this;
     }
+    private void Start()
+    {
+        SwipeDerection.SwipeEvent += OnInput;
+    }
     private void Update()
     {
 #if UNITY_EDITOR
@@ -195,7 +199,9 @@ public class Field : MonoBehaviour
         int value = Random.Range(0, 10) == 0 ? 2 : 1;
 
         var cell = emptyCell[Random.Range(0, emptyCell.Count)];
-        cell.SetValue(cell.X, cell.Y, value);        
+        cell.SetValue(cell.X, cell.Y, value, false);
+
+        CellAnimationController.Instance.SmoothAppear(cell);
     }
     private void ResetCellsFlags()
     {
