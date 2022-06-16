@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,7 +39,7 @@ public class Field : MonoBehaviour
             OnInput(Vector2.down);
 #endif       
     }
-    private void OnInput(Vector2 direction)
+    public void OnInput(Vector2 direction)
     {
         if (!GameConroller.GameStarted)
             return;
@@ -72,6 +71,7 @@ public class Field : MonoBehaviour
                 var cellToMerge = FindCellToMerge(cell, direction);
                 if(cellToMerge != null)
                 {
+                    GameConroller.Instance.AudioPlaySwip();
                     cell.MergeWithCell(cellToMerge);
                     _anyCellMoved = true;
                     continue;
@@ -80,6 +80,7 @@ public class Field : MonoBehaviour
                 var emptyCell = FindEmptyCell(cell, direction); 
                 if(emptyCell != null)
                 {
+                    GameConroller.Instance.AudioPlaySwip();
                     cell.MoveToCell(emptyCell);
                     _anyCellMoved = true;
                 }
@@ -130,11 +131,11 @@ public class Field : MonoBehaviour
         {
             for (int y = 0; y < _fieldSize; y++)
             {
-                if(_field[x, y].Value == Cell.MaxValue)
-                {
-                    GameConroller.Instance.Win();
-                    return;
-                }
+                //if(_field[x, y].Value == Cell.MaxValue)
+                //{
+                //    GameConroller.Instance.Win();
+                //    return;
+                //}
                 if( lose &&
                     _field[x, y].IsEmpty ||
                     FindCellToMerge(_field[x, y], Vector2.right) ||

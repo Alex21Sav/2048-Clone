@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -51,7 +49,6 @@ public class CellAnimation : MonoBehaviour
             Destroy();
         });
     }
-
     public void Appear(Cell cell)
     {
         cell.CancelAnimation();
@@ -76,9 +73,6 @@ public class CellAnimation : MonoBehaviour
             cell.UpdateCell();
             Destroy();
         });
-
-
-
     }    
 
     public void Destroy()

@@ -32,13 +32,13 @@ public class Cell : MonoBehaviour
         if(updateUI)
         UpdateCell();
     }
-
     public void IncreaseValue()
     {
         Value++;
         HasMerged = true;
 
-        GameConroller.Instance.AddPoints(Points);        
+        GameConroller.Instance.AddPoints(Points);
+        Enemy.Instance.TakeDamage(Points);
     }
     public void ResetFlags()
     {
@@ -62,12 +62,10 @@ public class Cell : MonoBehaviour
         _points.color = Value <= 2 ? ColorManager.Instance.PointsDarkColor : ColorManager.Instance.PointsLightColor;
         _image.color = ColorManager.Instance.CellColors[Value];
     }
-
     public void SetAnimation(CellAnimation animation)
     {
         _currentAnimtion = animation;
     }
-
     public void CancelAnimation()
     {
         if(_currentAnimtion != null)        

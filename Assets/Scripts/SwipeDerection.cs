@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwipeDerection : MonoBehaviour
@@ -48,7 +46,6 @@ public class SwipeDerection : MonoBehaviour
 
         CheckSwipe();
     }
-
     private void CheckSwipe()
     {
         _swipeDelta = Vector2.zero;
@@ -77,7 +74,6 @@ public class SwipeDerection : MonoBehaviour
             ResetSwipe();
         }
     }
-
     private void ResetSwipe()
     {
         _isSwiping = false;
