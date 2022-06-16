@@ -2,4 +2,8 @@
 
 Pet project # 2
 
-![grab-landing-page](https://github.com/Alex21Sav/2048-Clone/blob/main/ScreenGif.gif)
+2048:
+- Added levels
+- Bosses added
+
+![grab-landing-page](https://github.com/Alex21Sav/Monster_Hunt_2048/blob/main/Petproject.gif)
