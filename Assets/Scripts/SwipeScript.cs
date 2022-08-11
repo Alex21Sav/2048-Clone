@@ -9,7 +9,6 @@ public class SwipeScript : MonoBehaviour
     private float _minSwipeDist = 50.0f;
     private float _maxSwipeTime = 0.5f;
 
-
     void Update()
     {
         if (Input.touchCount > 0)

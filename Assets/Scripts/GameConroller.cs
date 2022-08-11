@@ -1,16 +1,20 @@
 using UnityEngine;
 using TMPro;
+using System;
+using Random = UnityEngine.Random;
 
 public class GameConroller : MonoBehaviour
 {
     public static GameConroller Instance;
 
     [SerializeField] private TextMeshProUGUI _gameResult;
-    [SerializeField] private RandomEnemy _randomEnemy;
+    [SerializeField] private AvatarEnemyActiv _avatarEnemyActiv;
     [SerializeField] private AudioSource _swipe;
 
     public static int Points { get; private set; }
     public static bool GameStarted { get; private set; }
+    
+    public static event Action ResetGame;
 
     private void Awake()
     {
@@ -19,9 +23,18 @@ public class GameConroller : MonoBehaviour
     }
     public void Start()
     {
-        StartGame();
+        ResatartGame();
     }
-    public void StartGame()
+    
+    private void OnEnable()
+    {
+        StartLavel.GetIndexGame += ChoiceGame;
+    }
+    private void OnDisable()
+    {
+        StartLavel.GetIndexGame -= ChoiceGame;
+    }
+    public void ResatartGame()
     {
         int index = Enemy.Instance.GetIndex();
         _gameResult.text = "";
@@ -30,9 +43,21 @@ public class GameConroller : MonoBehaviour
         
         Field.Instance.GenerteFiled();
         Enemy.Instance.RestartGame();
-        _randomEnemy.EnemyDisable();
-        _randomEnemy.RandomEnemyActiv(index);
+        _avatarEnemyActiv.EnemyDisable();
+        _avatarEnemyActiv.EnemyActiv(index);
+        ResetGame?.Invoke();
+    }
+    public void ChoiceGame(int index)
+    {
+        _gameResult.text = "";
+        SetPoints(0);
+        GameStarted = true;
         
+        Field.Instance.GenerteFiled();
+        Enemy.Instance.SetPresentHP(index );
+        _avatarEnemyActiv.EnemyDisable();
+        _avatarEnemyActiv.EnemyActiv(index);
+        ResetGame?.Invoke();
     }
     public void Win()
     {

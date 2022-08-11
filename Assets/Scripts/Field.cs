@@ -24,7 +24,7 @@ public class Field : MonoBehaviour
     }
     private void Start()
     {
-        SwipeDerection.SwipeEvent += OnInput;
+        //SwipeDerection.SwipeEvent += OnInput;
     }
     private void Update()
     {
