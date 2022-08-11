@@ -1,4 +1,9 @@
-# 2048-Clone
-Study Project # 11
+# Monster_Hunt_2048
 
-![grab-landing-page](https://github.com/Alex21Sav/2048-Clone/blob/main/ScreenGif.gif)
+Pet project # 2
+
+2048:
+- Added levels
+- Bosses added
+
+![grab-landing-page](https://github.com/Alex21Sav/Monster_Hunt_2048/blob/main/Petproject.gif)
